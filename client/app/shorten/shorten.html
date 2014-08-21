@@ -1,5 +1,12 @@
-<div id='container'>
-<!-- Your code here -->
+<div id="container" ng-controller="ShortenController">
+
+  <img ng-if="loading" src="/assets/spiffygif_46x46.gif">
+
+  <form name="shortenform" ng-submit="shortenform.$valid && addLink()" novalidate>
+    <input name="shorten" type="url" ng-model="link.url" >
+    <input type="submit"/>
+  </form>
+  <a href="http://localhost:8000/#/links">links</a>
 
 </div>
 

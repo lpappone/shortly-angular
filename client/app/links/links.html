@@ -1,3 +1,13 @@
-<div id='container'>
+<div id="container" ng-controller="LinksController">
+
   <!-- Your html here -->
+<h2>Links</h2>
+<input placeholder="Enter search here" ng-model="searchParameter"/>
+
+<a href="http://local/host:8000/#/shorten">shorten</a>
+<ul>
+  <li ng-repeat="site in data.links | filter:searchParameter |orderBy: 'visits'">{{site.title}} {{site.code}} {{site.url}} Visits: {{site.visits}}</li>
+</ul>
 </div>
+
+<!--Maybe include an anchor tag with a link to http://localhost:8000/api/links/81b47 -->

@@ -21,7 +21,7 @@ angular.module('shortly.services', [])
   return {
     getLinks: getLinks,
     shortenLink: shortenLink
-  }
+  };
   // Your code here
 
 

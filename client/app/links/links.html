@@ -1,13 +1,27 @@
+
 <div id="container" ng-controller="LinksController">
 
   <!-- Your html here -->
-<h2>Links</h2>
-<input placeholder="Enter search here" ng-model="searchParameter"/>
+  <div class="input-group">
 
-<a href="http://local/host:8000/#/shorten">shorten</a>
-<ul>
-  <li ng-repeat="site in data.links | filter:searchParameter |orderBy: 'visits'">{{site.title}} {{site.code}} {{site.url}} Visits: {{site.visits}}</li>
-</ul>
+  <span class="input-group-addon">Filter List</span>
+    <paper-input class="search-bar form-control" label="Enter search here" ng-model="searchParameter" noscript></paper-input>
+  </div>
+  <a class="navigation-button btn btn-default" href="http://localhost:8000/#/shorten">Go to link shortener</a>
+
+  <div ng-controller="CollapseController">
+
+  <ul class="links-list list-group" ng-repeat="site in data.links | filter:searchParameter |orderBy: 'visits'">
+    <li class="list-group-item list-head" ng-click="isCollapsed = !isCollapsed">{{site.title}} <span class="badge">Visits: {{site.visits}}</span> </li>
+<!--     <hr>
+ --><div collapse="isCollapsed">
+    <a class="list-group-item" ng-href="http://localhost:8000/api/links/{{site.code}}">shortened link</a>
+    <li class="list-group-item">{{site.url}}</li>
+    </div>
+  </ul>
+
+  </div>
+
 </div>
 
 <!--Maybe include an anchor tag with a link to http://localhost:8000/api/links/81b47 -->

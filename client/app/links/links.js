@@ -1,4 +1,4 @@
-angular.module('shortly.links', [])
+angular.module('shortly.links', ['ui.bootstrap'])
 
 .controller('LinksController', function ($scope, Links) {
 
@@ -7,7 +7,6 @@ angular.module('shortly.links', [])
   $scope.getLinks = function(){
     Links.getLinks().then(function(res){
       $scope.data.links = res.data;
-      console.log($scope.data.links);
     }).catch(function(err){
       console.log(err);
     });
@@ -15,7 +14,10 @@ angular.module('shortly.links', [])
 
   $scope.getLinks();
   // Your code here
-});
+})
 
-//http://localhost:8000/api/links/81b47
-//This is the format we need to use.
+.controller('CollapseController', function ($scope) {
+
+  $scope.isCollapsed = true;
+  $scope.test = "Hello World!";
+});
